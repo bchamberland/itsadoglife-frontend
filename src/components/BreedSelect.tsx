@@ -41,6 +41,17 @@ export default function BreedSelect({ onStart }: Props) {
     <div className={styles.container}>
       <h1 className={styles.title}>It's a Dog Life</h1>
 
+      <div className={styles.howToPlay}>
+        <p>
+          Experience life as a dog from birth to old age. Each turn draws a card
+          — moments, decisions, and surprises that shape your dog's story.
+          Your choices affect stats like <strong>energy</strong>,{" "}
+          <strong>owner bond</strong>, and <strong>training</strong>. Every
+          playthrough is different. There are no wrong answers, just a life
+          well lived.
+        </p>
+      </div>
+
       {error && <p className={styles.error}>{error}</p>}
 
       {!selected ? (

@@ -7,6 +7,22 @@
   margin-bottom: 0.25rem;
 }
 
+.howToPlay {
+  text-align: center;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 420px;
+  margin: 0 auto 1rem;
+  padding: 0.75rem 1rem;
+  background: #f5f0e8;
+  border-radius: 8px;
+}
+
+.howToPlay p {
+  margin: 0;
+}
+
 .subtitle {
   text-align: center;
   font-weight: normal;
