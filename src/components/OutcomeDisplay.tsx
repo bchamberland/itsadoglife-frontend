@@ -3,10 +3,11 @@ import styles from "./OutcomeDisplay.module.css";
 
 interface Props {
   outcomes: OutcomesApplied;
+  flavorText: string | null;
   onContinue: () => void;
 }
 
-export default function OutcomeDisplay({ outcomes, onContinue }: Props) {
+export default function OutcomeDisplay({ outcomes, flavorText, onContinue }: Props) {
   const statEntries = Object.entries(outcomes.stat_changes);
   const hasAnything =
     statEntries.length > 0 ||
@@ -20,6 +21,10 @@ export default function OutcomeDisplay({ outcomes, onContinue }: Props) {
   return (
     <div className={styles.container}>
       <h3 className={styles.heading}>Results</h3>
+
+      {flavorText && (
+        <p className={styles.flavorText}>{flavorText}</p>
+      )}
 
       {outcomes.challenge_result && (
         <p className={outcomes.challenge_result.passed ? styles.pass : styles.fail}>
