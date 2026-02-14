@@ -1,0 +1,76 @@
+.container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff;
+  margin-top: 0.5rem;
+}
+
+.heading {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.positive {
+  color: #2a7d4f;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.negative {
+  color: #c44;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.pass {
+  color: #2a7d4f;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.fail {
+  color: #c44;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.stageChange {
+  color: #6a3ac4;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.gained {
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+.nothing {
+  color: #888;
+  font-style: italic;
+}
+
+.continueBtn {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: #2a7d4f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.continueBtn:hover {
+  background: #236b42;
+}
