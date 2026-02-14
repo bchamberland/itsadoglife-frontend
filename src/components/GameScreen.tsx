@@ -19,7 +19,6 @@ export default function GameScreen({ playthrough, onUpdate }: Props) {
   const [currentCard, setCurrentCard] = useState<Card | null>(null);
   const [deckInfos, setDeckInfos] = useState<DeckInfo[] | null>(null);
   const [outcomes, setOutcomes] = useState<OutcomesApplied | null>(null);
-  const [flavorText, setFlavorText] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -46,15 +45,6 @@ export default function GameScreen({ playthrough, onUpdate }: Props) {
       const res = await resolveCard(playthrough.id, currentCard.id, choiceIndex);
       onUpdate(res.playthrough);
       setOutcomes(res.outcomes);
-
-      // Extract flavor text from card data
-      let flavor: string | null = null;
-      if (choiceIndex !== null && currentCard.choices?.[choiceIndex]?.outcomes) {
-        flavor = (currentCard.choices[choiceIndex].outcomes.flavor_text as string) ?? null;
-      } else if (currentCard.outcomes?.automatic) {
-        flavor = (currentCard.outcomes.automatic as Record<string, unknown>).flavor_text as string ?? null;
-      }
-      setFlavorText(flavor);
       setPhase("show_outcome");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to resolve card");
@@ -66,7 +56,6 @@ export default function GameScreen({ playthrough, onUpdate }: Props) {
   function handleContinue() {
     setCurrentCard(null);
     setOutcomes(null);
-    setFlavorText(null);
     setPhase("pick_deck");
   }
 
@@ -107,7 +96,7 @@ export default function GameScreen({ playthrough, onUpdate }: Props) {
       )}
 
       {phase === "show_outcome" && outcomes && (
-        <OutcomeDisplay outcomes={outcomes} flavorText={flavorText} onContinue={handleContinue} />
+        <OutcomeDisplay outcomes={outcomes} onContinue={handleContinue} />
       )}
     </div>
   );

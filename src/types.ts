@@ -53,6 +53,7 @@ export interface Choice {
     threshold?: number;
     requirements?: Choice["condition"][];
   };
+  outcomes?: Record<string, unknown>;
 }
 
 export interface Card {
@@ -77,6 +78,7 @@ export interface Card {
 }
 
 export interface OutcomesApplied {
+  result_flavor_text: string | null;
   stat_changes: Record<string, number>;
   traits_gained: string[];
   abilities_gained: string[];
