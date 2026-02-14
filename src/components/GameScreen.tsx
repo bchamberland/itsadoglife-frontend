@@ -85,12 +85,13 @@ export default function GameScreen({ playthrough, onUpdate }: Props) {
         />
       )}
 
-      {phase === "show_card" && currentCard && (
+      {(phase === "show_card" || phase === "show_outcome") && currentCard && (
         <CardDisplay
           card={currentCard}
           playthrough={playthrough}
           onResolve={handleResolve}
           loading={loading}
+          resolved={phase === "show_outcome"}
         />
       )}
 

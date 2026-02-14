@@ -6,6 +6,7 @@ interface Props {
   playthrough: Playthrough;
   onResolve: (choiceIndex: number | null) => void;
   loading: boolean;
+  resolved?: boolean;
 }
 
 function checkCondition(
@@ -36,7 +37,7 @@ function checkCondition(
   }
 }
 
-export default function CardDisplay({ card, playthrough, onResolve, loading }: Props) {
+export default function CardDisplay({ card, playthrough, onResolve, loading, resolved }: Props) {
   const isEvent = !card.choices || card.choices.length === 0;
 
   return (
@@ -54,32 +55,34 @@ export default function CardDisplay({ card, playthrough, onResolve, loading }: P
         </p>
       )}
 
-      <div className={styles.choices}>
-        {isEvent ? (
-          <button
-            className={styles.choiceBtn}
-            onClick={() => onResolve(null)}
-            disabled={loading}
-          >
-            {loading ? "Resolving..." : "Continue"}
-          </button>
-        ) : (
-          card.choices!.map((choice, i) => {
-            const available = checkCondition(choice.condition, playthrough);
-            return (
-              <button
-                key={i}
-                className={`${styles.choiceBtn} ${!available ? styles.locked : ""}`}
-                onClick={() => onResolve(i)}
-                disabled={loading || !available}
-              >
-                {choice.label}
-                {!available && <span className={styles.lockIcon}> (locked)</span>}
-              </button>
-            );
-          })
-        )}
-      </div>
+      {!resolved && (
+        <div className={styles.choices}>
+          {isEvent ? (
+            <button
+              className={styles.choiceBtn}
+              onClick={() => onResolve(null)}
+              disabled={loading}
+            >
+              {loading ? "Resolving..." : "Continue"}
+            </button>
+          ) : (
+            card.choices!.map((choice, i) => {
+              const available = checkCondition(choice.condition, playthrough);
+              return (
+                <button
+                  key={i}
+                  className={`${styles.choiceBtn} ${!available ? styles.locked : ""}`}
+                  onClick={() => onResolve(i)}
+                  disabled={loading || !available}
+                >
+                  {choice.label}
+                  {!available && <span className={styles.lockIcon}> (locked)</span>}
+                </button>
+              );
+            })
+          )}
+        </div>
+      )}
     </div>
   );
 }
