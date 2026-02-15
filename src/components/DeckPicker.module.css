@@ -3,30 +3,60 @@
 }
 
 .heading {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.hint {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
 }
 
 .deckList {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .deckBtn {
+  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  background: #fff;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border: 2px solid #c4a46c;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #fffdf5 0%, #f5eedb 100%);
   cursor: pointer;
   font-size: 1rem;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    0 4px 0 -1px #f0e8d4,
+    0 4px 0 0 #c4a46c,
+    0 6px 0 -1px #ebe3cf,
+    0 6px 0 0 #b89a5e;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .deckBtn:hover:not(:disabled) {
-  background: #f0f0f0;
-  border-color: #888;
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.12),
+    0 4px 0 -1px #f0e8d4,
+    0 4px 0 0 #c4a46c,
+    0 6px 0 -1px #ebe3cf,
+    0 6px 0 0 #b89a5e;
+  border-color: #a88a50;
+}
+
+.deckBtn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 2px 0 -1px #f0e8d4,
+    0 2px 0 0 #c4a46c;
 }
 
 .deckBtn:disabled {
@@ -34,7 +64,33 @@
   cursor: not-allowed;
 }
 
+.deckIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.deckLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+
+.deckName {
+  font-weight: 600;
+  color: #3a2e1c;
+}
+
 .remaining {
   font-size: 0.8rem;
-  color: #888;
+  color: #8a7a60;
+  margin-top: 0.125rem;
+}
+
+.drawArrow {
+  font-size: 1.5rem;
+  color: #a88a50;
+  flex-shrink: 0;
+  font-weight: bold;
 }

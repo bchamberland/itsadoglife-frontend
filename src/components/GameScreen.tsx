@@ -82,6 +82,7 @@ export default function GameScreen({ playthrough, onUpdate }: Props) {
           deckInfos={deckInfos}
           onPick={handlePickDeck}
           loading={loading}
+          dogName={playthrough.dog_name}
         />
       )}
 
